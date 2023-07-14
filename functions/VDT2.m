@@ -1,0 +1,10 @@
+function out = VDT2(Data, ord1 , ord2)
+sz=size(Data);
+lg=length(ord1);
+% tmsz=sqrt(ord(1:end-1));
+Data1=reshape(Data, [ord1 ord2 sz(end)]);
+ld=zeros(1,2*lg);
+ld(1:2:end)=1:lg;   %%M
+ld(2:2:end)=lg+1:2*lg;   %%% N
+Data2=permute(Data1, [ld length(ld)+1]);   
+out= reshape(Data2, [ord1.*ord2 sz(end)]);
